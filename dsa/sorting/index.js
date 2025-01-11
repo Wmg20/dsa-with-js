@@ -55,16 +55,46 @@ const swapFn = (array, firstIndex, secondIndex) => {
  * INSERTION SHORT
  */
 
-const insertionShort = (array) => {
-     for(let i = 1; i < array.length - 1; i++){
-        let j = i;
+// const insertionShort = (array) => {
+//      for(let i = 1; i < array.length - 1; i++){
+//         let j = i;
 
-        while(j > 0 && array[j] < array[j - 1]){
-            swapFn(array, j, j - 1);
-            j--;
-        }
-     }
-     return array;
-}
+//         while(j > 0 && array[j] < array[j - 1]){
+//             swapFn(array, j, j - 1);
+//             j--;
+//         }
+//      }
+//      return array;
+// }
 
-console.log(insertionShort([3,4,2,1,5]))
+// console.log(insertionShort([3,4,2,1,5]))
+
+
+function twoSum(nums, target) {
+    // Create a map to store numbers and their indices
+    const numMap = new Map();
+  
+    // Loop through the array
+    for (let i = 0; i < nums.length; i++) {
+      // Calculate the complement
+      const complement = target - nums[i];
+      console.log(complement, i);
+  
+      // Check if the complement exists in the map
+      if (numMap.has(complement)) {
+        return [numMap.get(complement), i];
+      }
+  
+      // Add the current number and its index to the map
+      numMap.set(nums[i], i);
+    }
+  
+    // Return an empty array if no solution exists (shouldn't happen in valid inputs)
+    return [];
+  }
+  
+  // Example usage
+  const nums = [2, 7, 11, 15];
+  const target = 9;
+  console.log(twoSum(nums, target)); // Output: [0, 1]
+  
