@@ -1,3 +1,5 @@
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:3324353928.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1151549157.
 /**
  * Sorting - Selection Sort
  */
@@ -69,32 +71,98 @@ const swapFn = (array, firstIndex, secondIndex) => {
 
 // console.log(insertionShort([3,4,2,1,5]))
 
+/**
+ * MERGE SHORT - DIVIDE AND MERGE
+ * GIVEN ARRAY IS DIVIDED INTO SMALLER PART TILL SINGLE ELEMENT IS LEFT THEN SORTED AND MERGED 
+ */
 
-function twoSum(nums, target) {
-    // Create a map to store numbers and their indices
-    const numMap = new Map();
-  
-    // Loop through the array
-    for (let i = 0; i < nums.length; i++) {
-      // Calculate the complement
-      const complement = target - nums[i];
-      console.log(complement, i);
-  
-      // Check if the complement exists in the map
-      if (numMap.has(complement)) {
-        return [numMap.get(complement), i];
-      }
-  
-      // Add the current number and its index to the map
-      numMap.set(nums[i], i);
+const merge = (arr, low, mid, high) => {
+    const n1 = mid - low + 1;
+    const n2 = high - mid;
+
+    // Create temp arrays
+    const L = new Array(n1);
+    const R = new Array(n2);
+
+    // Copy data to temp arrays L[] and R[]
+    for (let i = 0; i < n1; i++)
+        L[i] = arr[low + i];
+    for (let j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    // Merge the temp arrays back into arr[l..r]
+    let i = 0; // Initial index of first subarray
+    let j = 0; // Initial index of second subarray
+    let k = low; // Initial index of merged subarray
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
     }
+
+    // Copy the remaining elements of L[], if there are any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if there are any
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+const mergeSort = (arr, low, high) => {
+    if (low < high) {
+        const mid = Math.floor(low + (high - low) / 2);
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid + 1, high);
+        merge(arr, low, mid, high);
+        return arr;
+    }
+}
+
+// console.log(mergeSort([1,4,7,9,3,2,5,6,8], 0, 8));
+console.log(mergeSort([1,4,7,9,3,2,5,6,8], 0, 8)); 
+
+
+/**
+ * TWO SUM
+ */
+// function twoSum(nums, target) {
+//     // Create a map to store numbers and their indices
+//     const numMap = new Map();
   
-    // Return an empty array if no solution exists (shouldn't happen in valid inputs)
-    return [];
-  }
+//     // Loop through the array
+//     for (let i = 0; i < nums.length; i++) {
+//       // Calculate the complement
+//       const complement = target - nums[i];
+//       console.log(complement, i);
   
-  // Example usage
-  const nums = [2, 7, 11, 15];
-  const target = 9;
-  console.log(twoSum(nums, target)); // Output: [0, 1]
+//       // Check if the complement exists in the map
+//       if (numMap.has(complement)) {
+//         return [numMap.get(complement), i];
+//       }
+  
+//       // Add the current number and its index to the map
+//       numMap.set(nums[i], i);
+//     }
+  
+//     // Return an empty array if no solution exists (shouldn't happen in valid inputs)
+//     return [];
+//   }
+  
+//   // Example usage
+//   const nums = [2, 7, 11, 15];
+//   const target = 9;
+//   console.log(twoSum(nums, target)); // Output: [0, 1]
   
