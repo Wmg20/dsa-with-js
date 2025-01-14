@@ -1,16 +1,15 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:3324353928.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1151549157.
+
 /**
  * Sorting - Selection Sort
  */
 
 // SWAPING ARRAY ELEMENTS 
 
-const swapFn = (array, firstIndex, secondIndex) => {
-    const temp = array[firstIndex];
-    array[firstIndex] = array[secondIndex];
-    array[secondIndex] = temp;
-}
+// const swapFn = (array, firstIndex, secondIndex) => {
+//     const temp = array[firstIndex];
+//     array[firstIndex] = array[secondIndex];
+//     array[secondIndex] = temp;
+// }
 
 // const selectionSort = (array) => {
 //     for (let i = 0; i < array.length; i++){
@@ -131,7 +130,6 @@ const mergeSort = (arr, low, high) => {
     }
 }
 
-// console.log(mergeSort([1,4,7,9,3,2,5,6,8], 0, 8));
 console.log(mergeSort([1,4,7,9,3,2,5,6,8], 0, 8)); 
 
 
