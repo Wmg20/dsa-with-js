@@ -14,6 +14,18 @@
  */
 
 
+/**
+ * --------- WHY USE VAR INSTED OF LET IN FOR LOOP ----------
+ * 
+To Maintain ES5 Compatibility
+1. The polyfill is meant for older browsers that do not support let.
+2. let was introduced in ES6 (2015), while var has existed since ES3.
+3. Since polyfills are used to provide modern functionality in older JavaScript environments,
+4. using var ensures it works in ES5-compliant browsers.
+5. var have functional scope while let have block scope
+ */
+
+
 // create a map polyfill
 if (!Array.prototype.wmgMap) {
 
@@ -48,11 +60,12 @@ if (!Array.prototype.wmgMap) {
 
 const numbers = [1, 2, 3, 4];
 
+// simple map method
 const squared = numbers.wmgMap(function (num, index, array) {
     return num * num;
 });
 
-// use of thisArg
+// use of thisArg binding 
 const obj = {
     multiplier: 2,
 
