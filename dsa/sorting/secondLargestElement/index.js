@@ -8,21 +8,23 @@ function secondlargestfn(arr) {
         return -1;
     }
 
-    let largest = arr[0];
-    let secondLargest = -1;
+    let largest = arr[0]; // assume first element as largest
+    let secondLargest = -1; // initialize second largest element as it do no exist initially
 
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] > largest) {
-            secondLargest = largest;
-            largest = arr[i];
+            secondLargest = largest; // largest become second larges element
+            largest = arr[i]; // update largest element
         } else if (
-            arr[i] > secondLargest &&
+            // check if current element is greater than second largest and less than largest
+            arr[i] > secondLargest && 
             arr[i] < largest
         ) {
             secondLargest = arr[i];
         }
     }
 
+    // return second largest element
     return secondLargest;
 }
 
