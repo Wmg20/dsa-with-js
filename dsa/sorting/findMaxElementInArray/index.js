@@ -22,15 +22,3 @@ function bubbleSort(arr) {
 console.log(bubbleSort(num));
 
 
-// FIND SECOND LARGEST ELEMENT - IN NON REPEATING ARRAY
-
-// return arr[n - 2];
-
-
-// FIND SECOND LARGEST ELEMENT - IN NON REPEATING ELEMENT ARRAY
-
-/**
- * STEP-1
- * SORT AND REMOVE DUBLICATE ELEMENTS
- * 
-*/
