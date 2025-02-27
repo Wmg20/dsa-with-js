@@ -13,7 +13,6 @@ const numArr = [1, 2, 3, 4, 5, 6, 6, 7];
 
 // find second largest element in an array - may contain repeared values
 function secondlargestfn(arr) {
-
     // base condition
     if (arr.length < 2) return -1;
 
