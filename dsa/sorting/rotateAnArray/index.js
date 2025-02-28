@@ -12,6 +12,7 @@ function rotateArr (arr) {
     let n = arr.length; 
     let temp = arr[0]; // store first element
 
+    // why starting from i = 1 - as we are already storing the o index value and want to shift the values to left 
     for (let i = 1; i < n; i++) {
         // shift element of array by one
         arr[i-1] = arr[i] 
