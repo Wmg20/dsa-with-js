@@ -1,7 +1,8 @@
+const arr = [1, 2, 3, 4, 5, 6]
+
 /**
  * 1. Rotating array k places - left
  */
-const arr = [1, 2, 3, 4, 5, 6]
 
 function rotateArr(arr) {
 
@@ -29,6 +30,7 @@ function rotateArr(arr) {
 /**
  * 2. Rotating array k places - right
  */
+
 function rotateArrK(arr, k) {
 
     // base case
@@ -57,8 +59,34 @@ function rotateArrK(arr, k) {
 }
 
 /**
- * 3. 
+ * 3. Revesre an array
  */
+
+function RevesreArr(arr) {
+
+    // base case
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    let n = arr.length;
+
+    for (let i = 0; i < n / 2; i++) {
+        let temp = arr[i];
+        arr[i] = arr[n - 1 - i];
+        arr[n - 1 - i] = temp;
+    }
+
+    return arr;
+}
+
+console.log(RevesreArr(arr));
+
+
+
+
+
+
 
 
 
