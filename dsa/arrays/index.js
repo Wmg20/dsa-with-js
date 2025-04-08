@@ -8,6 +8,7 @@
 
 const arr = [1,4,0,3,2,0,9,0]
 
+// 1 Method
 function moveZeroAtEnd (arr) {
    if (arr.length === 0) return [];
    
@@ -29,6 +30,37 @@ function moveZeroAtEnd (arr) {
       }
    return arr
 }
-console.log(moveZeroAtEnd(arr))
+// console.log(moveZeroAtEnd(arr))
+
+// 2 Method - Two Pointer
+
+function moveZeroAtEndTwoPointer (arr) {
+   
+    let j = -1;
+    
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === 0){
+            // swap
+            j = i;
+            break;
+        }
+    }
+
+    if(j === -1) return arr;
+
+    // iterate from j + 1 to end
+    for(let i = j + 1; i < arr.length; i++){
+        if(arr[i] !== 0){
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            j++;
+        }
+    }
+    return arr;
+}
+
+console.log(moveZeroAtEndTwoPointer(arr))
+
 
 
