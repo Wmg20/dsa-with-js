@@ -1,3 +1,4 @@
+const util = require('util');
 // Linked List
 
 
@@ -68,6 +69,10 @@ MyLinkedList.prototype.addAtTail = function (val) {
 }
 
 MyLinkedList.prototype.addAtIndex = function (val, index) {
+    if (index < 0 || index > this.size) {
+        return;
+    }
+
     const newNode = new MyNode(val);
 
     if (index === 0) {
@@ -98,7 +103,59 @@ const list = new MyLinkedList();
 list.addAtHead(5);
 list.addAtHead(6);
 list.addAtTail(7);
+list.addAtIndex(11, 1);
 
-list.addAtIndex(11, 1)
 
-console.log(list);
+/**
+ * Get node at give index
+ */
+MyLinkedList.prototype.get = function (index) {
+    if (index < 0 || index >= this.size) {
+        return -1;
+    }
+   let curr = this.head;
+   
+   for(let i = 0; i < index; i++) {
+       curr = curr.next;
+   }
+
+    return curr.val;
+}
+
+// console.log("Value at index 2:", list.get(2));
+// console.log("Value at index 7:", list.get(7));
+
+/**
+ * Remove Node at index
+ */
+
+MyLinkedList.prototype.deleteAtIndex = function (index) {
+    let curr = this.head;
+
+    // edge case - when index is out of bound
+    if (index < 0 || index >= this.size) {
+        return -1;
+    }
+
+    // edge case - when index is 0 (on head)
+    // simple make next node as head
+    if (index === 0) {
+        this.head = this.head.next;
+    } else {
+        // this case will also handle tail index
+        // because last node next is null 
+        // so it will set the second last node next to null
+        for(let i = 0; i < index - 1; i++) {
+            curr = curr.next;
+        }
+    
+        curr.next = curr.next.next; 
+    } 
+    
+    this.size--;  
+}
+
+list.deleteAtIndex(1)
+
+
+console.log(util.inspect(list, {showHidden: false, depth: null, colors: false}));
